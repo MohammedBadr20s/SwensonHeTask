@@ -1,8 +1,11 @@
 import UIKit
 
 // I. Arithmatic operators to solve this equation (3 1 3 9 = 12)
+// We Are going to subtract between Pranthesis (3 subtracts 1) Multiplication with (Minus 3 Plus 9)
+// So It's going to be (2) Multiplication with (6) Equals 12 which makes the left side Equals the Right Side
+// and here's a code implmentation illustrates my solution
 func arthimaticOperators() -> Bool {
-    return (3+1) * (9/3) == 12
+    return (3 - 1) * (-3 + 9) == 12
 }
 
 
@@ -14,13 +17,14 @@ arthimaticOperators()
 of anagrams: debit card/bad credit, punishments/nine thumps, etc.)
  The idea after anagrams is if the two strings contains same chars no matter what its order*/
 
+//Solution using Swift Sort algorithm
 func swiftAnagramsChecker(stringA: String, stringB: String) -> Bool {
 
-    return stringA.lowercased().sorted() == stringB.lowercased().sorted()
+    return stringA.lowercased().sorted().filter { $0 != " "} == stringB.lowercased().sorted().filter { $0 != " "}
 }
 swiftAnagramsChecker(stringA: "debit card", stringB: "bad credit")
-swiftAnagramsChecker(stringA: "punishments", stringB: "nine thumps")
-swiftAnagramsChecker(stringA: "punishments", stringB: "ninethumpss")
+swiftAnagramsChecker(stringA: "punishments", stringB: "nine thumps") // false because punishments contains 2 s and nine thumps doesn't have the same char twice
+swiftAnagramsChecker(stringA: "punishments", stringB: "nine thumpss")
 
 
 /*III. Write a method in Swift to generate the nth Fibonacci number (1, 1, 2, 3,
