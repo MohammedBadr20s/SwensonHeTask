@@ -54,7 +54,7 @@ class CurrencyViewController: BaseViewController {
         
         self.viewModel.output.ratesData.bind { (data: [String : Double]) in
             
-            if data.count == 0 {
+            if data.isEmpty {
                 self.ratesTableView.showStateView(show: true, state: .noData, msg: "Opps! Looks like something went wrong")
             } else {
                 self.ratesTableView.tableFooterView = nil

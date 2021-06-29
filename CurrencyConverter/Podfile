@@ -7,13 +7,13 @@ target 'CurrencyConverter' do
 
   # Pods for CurrencyConverter
   pod 'RxSwift', '6.2.0'
-    pod 'RxCocoa', '6.2.0'
-    pod 'IQKeyboardManagerSwift'
-    pod 'Swinject'
-    pod 'Alamofire'
-    pod 'Kingfisher', '~> 6.0'
-    pod 'FlagKit'
-
+  pod 'RxCocoa', '6.2.0'
+  pod 'IQKeyboardManagerSwift'
+  pod 'Swinject'
+  pod 'Alamofire'
+  pod 'FlagKit'
+  pod 'SwiftMessages'
+    
   target 'CurrencyConverterTests' do
     inherit! :search_paths
     # Pods for testing

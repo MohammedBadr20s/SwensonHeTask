@@ -62,6 +62,7 @@ class CurrencyConverterViewController: BaseViewController {
             let text = self.baseCurrencyTF.text  ?? "1.00"
             self.baseCurrencyTF.text = (text.isEmpty ? "1.00" : text) + " \(self.baseCurrency)"
             if text.isEmpty {
+                self.showToast(message: "Oops! Looks like base currency text was empty\nSo we calculates default value 1 \(self.baseCurrency)", status: .info, position: .top, duration: .seconds(seconds: 2))
                 self.calculateResult()
             }
         }.disposed(by: self.viewModel.disposeBag)
