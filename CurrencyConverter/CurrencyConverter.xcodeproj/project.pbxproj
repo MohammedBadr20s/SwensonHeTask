@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3493D39F6501D98FE0AC679F /* Pods_CurrencyConverter_CurrencyConverterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7494D459426FA943A7769373 /* Pods_CurrencyConverter_CurrencyConverterUITests.framework */; };
 		AD28A029C9B54FCDC3CC124E /* Pods_CurrencyConverterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81305E72D1CCA58D035F21D5 /* Pods_CurrencyConverterTests.framework */; };
+		BC512814268B2E7300F11257 /* CurrencyConverterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC512813268B2E7300F11257 /* CurrencyConverterViewController.xib */; };
 		E5C6AE9E268A71800042FBBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C6AE9D268A71800042FBBA /* AppDelegate.swift */; };
 		E5C6AEA0268A71800042FBBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C6AE9F268A71800042FBBA /* SceneDelegate.swift */; };
 		E5C6AEA5268A71800042FBBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C6AEA3268A71800042FBBA /* Main.storyboard */; };
@@ -46,8 +47,7 @@
 		E5C6AFC4268A86EA0042FBBA /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C6AFC3268A86EA0042FBBA /* StateView.swift */; };
 		E5C6AFC9268A86F10042FBBA /* StateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5C6AFC8268A86F10042FBBA /* StateView.xib */; };
 		E5C6AFCE268A875D0042FBBA /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C6AFCD268A875D0042FBBA /* UITableView+Extension.swift */; };
-		E5C6AFD7268A8BD40042FBBA /* CurrencyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C6AFD5268A8BD40042FBBA /* CurrencyDetailsViewController.swift */; };
-		E5C6AFD8268A8BD40042FBBA /* CurrencyDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5C6AFD6268A8BD40042FBBA /* CurrencyDetailsViewController.xib */; };
+		E5C6AFD7268A8BD40042FBBA /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C6AFD5268A8BD40042FBBA /* CurrencyConverterViewController.swift */; };
 		E5C6AFE1268A94470042FBBA /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C6AFE0268A94470042FBBA /* UIViewController+Extension.swift */; };
 		E5C6AFF3268A95A70042FBBA /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5C6AFE7268A95A70042FBBA /* Roboto-Medium.ttf */; };
 		E5C6AFF5268A95A70042FBBA /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5C6AFE9268A95A70042FBBA /* Roboto-Regular.ttf */; };
@@ -79,6 +79,7 @@
 		A6E309F8D0C1248C766E86E2 /* Pods-CurrencyConverter-CurrencyConverterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConverter-CurrencyConverterUITests.release.xcconfig"; path = "Target Support Files/Pods-CurrencyConverter-CurrencyConverterUITests/Pods-CurrencyConverter-CurrencyConverterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B45DD343714A2EB5031EF4DC /* Pods-CurrencyConverter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConverter.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyConverter/Pods-CurrencyConverter.debug.xcconfig"; sourceTree = "<group>"; };
 		B4D25E963C77FDA4BDDDAB6A /* Pods_CurrencyConverter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CurrencyConverter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC512813268B2E7300F11257 /* CurrencyConverterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrencyConverterViewController.xib; sourceTree = "<group>"; };
 		C60156905D97BBB79AEC73AE /* Pods-CurrencyConverter-CurrencyConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConverter-CurrencyConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyConverter-CurrencyConverterUITests/Pods-CurrencyConverter-CurrencyConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE0E70B0C7A7DD9673778D6F /* Pods-CurrencyConverter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConverter.release.xcconfig"; path = "Target Support Files/Pods-CurrencyConverter/Pods-CurrencyConverter.release.xcconfig"; sourceTree = "<group>"; };
 		E5C6AE9A268A71800042FBBA /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,8 +125,7 @@
 		E5C6AFC3268A86EA0042FBBA /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		E5C6AFC8268A86F10042FBBA /* StateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StateView.xib; sourceTree = "<group>"; };
 		E5C6AFCD268A875D0042FBBA /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
-		E5C6AFD5268A8BD40042FBBA /* CurrencyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsViewController.swift; sourceTree = "<group>"; };
-		E5C6AFD6268A8BD40042FBBA /* CurrencyDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyDetailsViewController.xib; sourceTree = "<group>"; };
+		E5C6AFD5268A8BD40042FBBA /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
 		E5C6AFE0268A94470042FBBA /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E5C6AFE7268A95A70042FBBA /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		E5C6AFE9268A95A70042FBBA /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -368,8 +368,8 @@
 				E5C6AFB6268A83080042FBBA /* Cells */,
 				E5C6AF64268A74FF0042FBBA /* CurrencyViewController.xib */,
 				E5C6AF63268A74FF0042FBBA /* CurrencyViewController.swift */,
-				E5C6AFD6268A8BD40042FBBA /* CurrencyDetailsViewController.xib */,
-				E5C6AFD5268A8BD40042FBBA /* CurrencyDetailsViewController.swift */,
+				BC512813268B2E7300F11257 /* CurrencyConverterViewController.xib */,
+				E5C6AFD5268A8BD40042FBBA /* CurrencyConverterViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -569,8 +569,8 @@
 				E5C6AFC9268A86F10042FBBA /* StateView.xib in Resources */,
 				E5C6AFF5268A95A70042FBBA /* Roboto-Regular.ttf in Resources */,
 				E5C6AFFC268A95A70042FBBA /* Roboto-Bold.ttf in Resources */,
+				BC512814268B2E7300F11257 /* CurrencyConverterViewController.xib in Resources */,
 				E5C6AEAA268A71830042FBBA /* LaunchScreen.storyboard in Resources */,
-				E5C6AFD8268A8BD40042FBBA /* CurrencyDetailsViewController.xib in Resources */,
 				E5C6AF66268A74FF0042FBBA /* CurrencyViewController.xib in Resources */,
 				E5C6AEA7268A71830042FBBA /* Assets.xcassets in Resources */,
 				E5C6AEA5268A71800042FBBA /* Main.storyboard in Resources */,
@@ -706,7 +706,7 @@
 				E5C6AEF9268A724C0042FBBA /* ErrorModel.swift in Sources */,
 				E5C6AF86268A75700042FBBA /* ResponseHandler.swift in Sources */,
 				E5C6AEF3268A722D0042FBBA /* BaseCoordinator.swift in Sources */,
-				E5C6AFD7268A8BD40042FBBA /* CurrencyDetailsViewController.swift in Sources */,
+				E5C6AFD7268A8BD40042FBBA /* CurrencyConverterViewController.swift in Sources */,
 				E5C6AEFE268A725C0042FBBA /* BaseModel.swift in Sources */,
 				E5C6AF78268A751E0042FBBA /* CurrencyRouter.swift in Sources */,
 				E5C6AF9E268A77D10042FBBA /* Storyboarded.swift in Sources */,

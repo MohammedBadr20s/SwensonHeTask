@@ -2,7 +2,7 @@
 //  CurrencyViewModel.swift
 //  CurrencyConverter
 //
-//  Created by GoKu on 28/06/2021.
+//  Created by Mohammed Badr on 28/06/2021.
 //
 
 import Foundation
@@ -10,12 +10,16 @@ import RxSwift
 import RxCocoa
 
 class CurrencyViewModel: BaseViewModel, ViewModelType {
-    var input: Input
-    var output: Output
+    
+    
     //MARK:- Subjects
     private var currencyData = BehaviorSubject<CurrencyModel?>(value: nil)
     private var rates = BehaviorSubject<[String: Double]>(value: [:])
-    //MARK:- Input & Output Structs
+    
+    //MARK:- Inner Input & Output Structs
+    var input: Input
+    var output: Output
+    
     struct Input {
     }
     
@@ -34,6 +38,7 @@ class CurrencyViewModel: BaseViewModel, ViewModelType {
         super.init()
     }
     
+    //MARK:- Getting Latest Currency Data and rates from Fixer.io API
     func getLatestData() {
         CurrencyRouter.getLatestData(accessKey: Constants.APIKey.rawValue).Request(model: CurrencyModel.self).subscribe { (response: CurrencyModel) in
             self.currencyData.onNext(response)

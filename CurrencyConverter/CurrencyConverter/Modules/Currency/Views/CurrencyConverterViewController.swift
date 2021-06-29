@@ -1,14 +1,14 @@
 //
-//  CurrencyDetailsViewController.swift
+//  CurrencyConverterViewController.swift
 //  CurrencyConverter
 //
-//  Created by GoKu on 29/06/2021.
+//  Created by Mohammed Badr on 29/06/2021.
 //
 
 import UIKit
-
-class CurrencyDetailsViewController: BaseViewController {
-
+//MARK:- Curency Converter View Controller which responsible for Converting The Currency
+class CurrencyConverterViewController: BaseViewController {
+    //MARK:- Properties
     @IBOutlet weak var baseCurrencyTF: UITextField!
     @IBOutlet weak var rateResultLbl: UILabel!
     let viewModel = Injection.container.resolve(CurrencyViewModel.self)!
@@ -20,6 +20,8 @@ class CurrencyDetailsViewController: BaseViewController {
             self.rateResultLbl.text = "\((rate.values.first ?? 1).round(places: 2)) \(rate.keys.first ?? "")"
         }
     }
+    
+    //MARK:- View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,20 +32,22 @@ class CurrencyDetailsViewController: BaseViewController {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.prefersLargeTitles = true
-//        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.tintColor = .white
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.isNavigationBarHidden = true
     }
+    
+    //MARK:- Configuring UI Elements
     override func ConfigureUI() {
         
         self.hideKeyboardWhenTappedAround()
         bindTextField()
     }
 
-    
+    //MARK:- Binding TextField
     private func bindTextField() {
         
         self.baseCurrencyTF.rx.controlEvent([.editingChanged]).bind { (_) in
@@ -62,7 +66,7 @@ class CurrencyDetailsViewController: BaseViewController {
             }
         }.disposed(by: self.viewModel.disposeBag)
     }
-    
+    //MARK:- Currency Converter Calculator
     private func calculateResult() {
         let text = self.baseCurrencyTF.text?.components(separatedBy: " ")
         let result = ((Double(text?.first ?? "1.00") ?? 1) * (self.rate.values.first ?? 1)).round(places: 2)

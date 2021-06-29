@@ -2,30 +2,32 @@
 //  CurrencyViewController.swift
 //  CurrencyConverter
 //
-//  Created by GoKu on 28/06/2021.
+//  Created by Mohammed Badr on 28/06/2021.
 //
 
 import UIKit
 import FlagKit
 
+//MARK:- CurrrencyModule Navigation Protocol
 protocol CurrencyViewNavigationDelegate {
     func navigateToCurrencyConverter(baseCurrency: String, rate: [String: Double])
 }
-
+//MARK:- Currency View Controller which responsible for showing the base currency and its rates list with other currencies
 class CurrencyViewController: BaseViewController {
-
+    //MARK:- Properties
     @IBOutlet weak var baseCurrencyImageView: UIImageView!
     @IBOutlet weak var baseCurrencyLbl: UILabel!
     @IBOutlet weak var ratesTableView: UITableView!
     let viewModel = Injection.container.resolve(CurrencyViewModel.self)!
     var navigationDelegate: CurrencyViewNavigationDelegate?
     
+    //MARK:- View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+    //MARK:- Configure UI elements
     override func ConfigureUI() {
         bindTableView()
         bindViewModel()
@@ -33,7 +35,8 @@ class CurrencyViewController: BaseViewController {
         self.viewModel.getLatestData()
     }
     
-    func bindViewModel() {
+    //MARK:- Binding View Model Data to View
+    private func bindViewModel() {
         self.viewModel.output.currencyData.subscribe { (response: CurrencyModel?) in
             if let data = response {
                 
@@ -59,8 +62,8 @@ class CurrencyViewController: BaseViewController {
             
         }.disposed(by: self.viewModel.disposeBag)
     }
-    
-    func bindTableView() {
+    //MARK:- Binding TableView with ViewModel Data
+    private func bindTableView() {
         self.ratesTableView.register(RatesCell.RatesCellNib(), forCellReuseIdentifier: RatesCell.id)
         
         self.viewModel.output.ratesData.bind(to: self.ratesTableView.rx.items) { (tableView, row, element) -> UITableViewCell in
@@ -78,6 +81,7 @@ class CurrencyViewController: BaseViewController {
 
     }
     
+    //MARK:- Rate Cell Configuration
     private func ratesCellConfiguration(tableView: UITableView, index: IndexPath, key: String, value: Double) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RatesCell.id, for: index) as? RatesCell else { return RatesCell()}
         

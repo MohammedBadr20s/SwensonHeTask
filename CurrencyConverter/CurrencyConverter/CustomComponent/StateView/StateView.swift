@@ -2,7 +2,7 @@
 //  StateView.swift
 //  CurrencyConverter
 //
-//  Created by GoKu on 29/06/2021.
+//  Created by Mohammed Badr on 29/06/2021.
 //
 import UIKit
 enum State {
@@ -31,7 +31,6 @@ class StateView: UIView {
         guard let view = loadViewFromNib() else { return }
         view.frame = self.bounds
         self.addSubview(view)
-        //        config()
     }
     func loadViewFromNib() -> UIView? {
         let nib = UINib(nibName: NibName, bundle: nil)
