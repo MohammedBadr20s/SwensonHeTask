@@ -21,9 +21,27 @@ class CurrencyCoordinator: Coordinator {
     func start(backDelegate: BackDelegate?) {
         let vc = CurrencyViewController.instantiate()
         vc.title = "Currency Converter"
+        vc.navigationDelegate = self
         self.navigationController.viewControllers.append(vc)
     }
     
-    
-    
+}
+
+extension CurrencyCoordinator: CurrencyViewNavigationDelegate {
+    func navigateToCurrencyConverter(baseCurrency: String, rate: [String : Double]) {
+        let vc = CurrencyDetailsViewController.instantiate()
+        vc.baseCurrency = baseCurrency
+        vc.rate = rate
+        vc.backDelegate = self
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+}
+
+extension CurrencyCoordinator: BackDelegate {
+    func back() {
+        navigationController.popViewController(animated: true)
+        if childCoordinalors.count > 1 {
+            childCoordinalors.removeLast()
+        }
+    }
 }

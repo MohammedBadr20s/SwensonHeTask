@@ -18,6 +18,7 @@ enum ResponseEnum {
 enum ApiError: Int {
     case BadRequest = 400
     case ServerError = 500
+    case BadGateway = 502
     case ClientSideError = 0
     case UnprocessedEntity = 422
     case Unauthorized = 401
@@ -31,6 +32,8 @@ enum ApiError: Int {
             return "API Bad Request"
         case .ServerError:
             return "SERVER ERROR"
+        case .BadGateway:
+            return "Bad Gatway"
         case .ClientSideError:
             return "Client Side ERROR"
         case .UnprocessedEntity:
@@ -52,6 +55,8 @@ enum ApiError: Int {
             return "Bad Request"
         case .ServerError:
             return "Server Error"
+        case .BadGateway:
+            return "Bad Gateway"
         case .ClientSideError:
             return "Client Side Error"
         case .UnprocessedEntity:
@@ -78,7 +83,7 @@ class ResponseHandler {
         guard let code = response.response?.statusCode else {
             return .failure(ApiError.ClientSideError, nil)
         }
-        if code < 400, let res = response.value as? Parameters {
+        if code < 400, let res = response.value as? Parameters, res["error"] == nil {
             return handleResponseData(response: .success(res), model: model)
         } else {
             return handleError(response.value, code: code)

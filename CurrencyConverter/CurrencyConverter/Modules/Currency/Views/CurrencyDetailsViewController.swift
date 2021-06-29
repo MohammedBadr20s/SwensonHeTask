@@ -11,6 +11,8 @@ class CurrencyDetailsViewController: BaseViewController {
 
     @IBOutlet weak var baseCurrencyTF: UITextField!
     @IBOutlet weak var rateResultLbl: UILabel!
+    let viewModel = Injection.container.resolve(CurrencyViewModel.self)!
+    var backDelegate: BackDelegate?
     var baseCurrency: String = ""
     var rate = [String: Double]() {
         didSet {
@@ -28,7 +30,7 @@ class CurrencyDetailsViewController: BaseViewController {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.tintColor = .white
+//        self.navigationController?.navigationBar.tintColor = .white
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -38,21 +40,32 @@ class CurrencyDetailsViewController: BaseViewController {
     override func ConfigureUI() {
         
         self.hideKeyboardWhenTappedAround()
-        baseCurrencyTF.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-        baseCurrencyTF.addTarget(self, action: #selector(self.textFieldDidBeginEditing(_:)), for: .editingDidBegin)
-        baseCurrencyTF.addTarget(self, action: #selector(self.textFieldDidEndEditing(_:)), for: .editingDidEnd)
+        bindTextField()
     }
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        let text = textField.text?.components(separatedBy: " ")
-        let result = ((Double(text?.first ?? "1") ?? 1) * (rate.values.first ?? 1)).round(places: 2)
-        self.rateResultLbl.text = "\(result) \(rate.keys.first ?? "")"
+
+    
+    private func bindTextField() {
         
+        self.baseCurrencyTF.rx.controlEvent([.editingChanged]).bind { (_) in
+            self.calculateResult()
+        }.disposed(by: self.viewModel.disposeBag)
+        
+        self.baseCurrencyTF.rx.controlEvent([.editingDidBegin]).bind { (_) in
+            self.baseCurrencyTF.text = nil
+        }.disposed(by: self.viewModel.disposeBag)
+        
+        self.baseCurrencyTF.rx.controlEvent([.editingDidEnd]).bind { (_) in
+            let text = self.baseCurrencyTF.text  ?? "1.00"
+            self.baseCurrencyTF.text = (text.isEmpty ? "1.00" : text) + " \(self.baseCurrency)"
+            if text.isEmpty {
+                self.calculateResult()
+            }
+        }.disposed(by: self.viewModel.disposeBag)
     }
     
-    @objc func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = nil
-    }
-    @objc func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.text = (textField.text ?? "") + " \(self.baseCurrency)"
+    private func calculateResult() {
+        let text = self.baseCurrencyTF.text?.components(separatedBy: " ")
+        let result = ((Double(text?.first ?? "1.00") ?? 1) * (self.rate.values.first ?? 1)).round(places: 2)
+        self.rateResultLbl.text = "\(result) \(self.rate.keys.first ?? "")"
     }
 }
